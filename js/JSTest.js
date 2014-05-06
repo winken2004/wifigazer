@@ -1,4 +1,5 @@
-<!--
+<!-- 
+// ver2.8
 var sc=1;              //動態scale變數
 var moveY=0;		   //動態X位移變數
 var moveX=0;		   //動態Y位移變數 no use now
@@ -31,9 +32,11 @@ function initCanvas()
 // this function need to modify the formula
 function setViewport(x,y)
 {
-	var xy = MapToScreen(x-32.5,y+21)
-	offsetX=offsetX-xy[0]-(sc-1)*32.5*20;
-	offsetY=offsetY-xy[1]-(sc-1)*21*20;
+	var tempX = 23;
+	var tempY = 16;
+	var xy = MapToScreen(x-tempX,y+tempY)
+	offsetX=offsetX-xy[0]-(sc-1)*tempX*20;
+	offsetY=offsetY-xy[1]-(sc-1)*tempY*20;
 	/*alert(offsetX);
 	alert(offsetY);*/
 	
@@ -313,8 +316,12 @@ function newMapDraw()
 	// getAP();
 	
 	//For test
-	PersonPos("user",personX+moveX,personY+moveY);
+	//PersonPos("user",personX+moveX,personY+moveY);
+	//
 	
+	//Person draw
+	
+	//video and text guide part
 	//錦成講堂 45.95 ,25.85, 56.35, 16.15,
 	if (personX+moveX>45.95&&personX+moveX<55.35&&personY+moveY>16.15&&personY+moveY<26.85)
 		{
@@ -365,10 +372,8 @@ function newMapDraw()
 		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>歡迎光臨</br>四處走走吧";
 		}
 	//
+	//video and text guide part
 	
-	
-	//Person draw
-	/*
 	if(personPosX!='null' || personPosY!='null'){
 	buttonMove("user",personPosX,personPosY);
 	var c = document.getElementById("floor_8");
@@ -382,18 +387,18 @@ function newMapDraw()
 	ctx.fillStyle = "black";
 	ctx.fillText("("+tx+","+ty+")",screenXY[0],screenXY[1]);
 	ctx.fillStyle = "gray";
-	}*/
+	}
 	
 	//Draw pop info
-	drawInfo("ED816",18.40,36.75,personPosX,personPosY,20.45-18.70,36.75-34.85);
-	drawInfo("ED814",11,34,personPosX,personPosY,14.1-11,34-30.75);
+	drawInfo("ED816",18.40-3,36.75,personPosX,personPosY,20.45-18.70,36.75-34.85);
+	drawInfo("ED814",9,35,personPosX,personPosY,11,11);
 	drawInfo("ED820",36.4,33.75,personPosX,personPosY,38-36.4,33.75-31.55);
 	drawInfo("ED824",54.50,26.3,personPosX,personPosY,56.8-54.50,26.3-23.5);
 	
-	drawInfo("ED816",18.40,36.75,personX+moveX-22.5/20,personY+moveY-22.5/20,20.45-18.70,36.75-34.85);
+	/*drawInfo("ED816",18.40-3,36.75,personX+moveX-22.5/20,personY+moveY-22.5/20,20.45-18.70,36.75-34.85);
 	drawInfo("ED814",11,34,personX+moveX-22.5/20,personY+moveY-22.5/20,14.1-11,34-30.75);
 	drawInfo("ED820",36.4,33.75,personX+moveX-22.5/20,personY+moveY-22.5/20,38-36.4,33.75-31.55);
-	drawInfo("ED824",54.50,26.3,personX+moveX-22.5/20,personY+moveY-22.5/20,56.8-54.50,26.3-23.5);
+	drawInfo("ED824",54.50,26.3,personX+moveX-22.5/20,personY+moveY-22.5/20,56.8-54.50,26.3-23.5);*/
 	
 	/*personX=personX+1;
 	personY=personY+1;*/
@@ -1120,12 +1125,12 @@ function main()
 {
 	//var user = new initPerson();
 	initCanvas();
-	/*getAP();
+	getAP();
 	if(personPosX == 'null' || personPosY == 'null')
 	setViewport(30,30);
 	else
-	setViewport(personPosX,personPosY);*/
-	setViewport(personX+moveX,personY+moveY);
+	setViewport(personPosX,personPosY);
+	//setViewport(personX+moveX,personY+moveY);
 	setTimeout("main()" , 2500);	
 	//drawMap();
 }
