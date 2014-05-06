@@ -13,6 +13,7 @@ var person = 0;
 var personPosX='null';
 var personPosY='null';
 var current_play_video = "";
+var enable_video = 0;	//假如使用者不想聽影片的話，影片不會因為資料更新而自動播放
 
 
 
@@ -322,9 +323,15 @@ function newMapDraw()
 			{
 			top.leftFrame.player.loadVideoById("IIdmUqUzrxo");
 			current_play_video="IIdmUqUzrxo";
+			enable_video = 0;
 			}
-		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>喵喵喵</br>喵喵喵喵喵";
-		top.leftFrame.play();
+		
+		if(enable_video) 
+			{
+			top.leftFrame.document.getElementById("textbox").innerHTML = "</br>喵喵喵</br>喵喵喵喵喵";
+			top.leftFrame.play();
+			enable_video = 0;
+			}
 		}
 	//820 35.3 ,32.5 ,39.15 ,25.9
 	else if (personX+moveX>35.3&&personX+moveX<39.15&&personY+moveY>25.9&&personY+moveY<33.5)
@@ -334,8 +341,12 @@ function newMapDraw()
 			top.leftFrame.player.loadVideoById("ZZ5LpwO-An4","30");
 			current_play_video="ZZ5LpwO-An4";
 			}
-		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>嘿耶耶~</br>嘿耶耶 嘿耶耶~</br></br>I say HEY</br></br>What is going on~~";
-		top.leftFrame.play();
+		if(enable_video) 
+			{
+			top.leftFrame.document.getElementById("textbox").innerHTML = "</br>嘿耶耶~</br>嘿耶耶 嘿耶耶~</br></br>I say HEY</br></br>What is going on~~";
+			top.leftFrame.play();
+			enable_video = 0;
+			}
 		}
 	//814 電腦room 3.45, 32.55, 14.1, 25.95
 	else if (personX+moveX>3.45&&personX+moveX<14.1&&personY+moveY>25.95&&personY+moveY<33.55)
@@ -344,9 +355,14 @@ function newMapDraw()
 			{
 			top.leftFrame.player.loadVideoById("Vl75aVHhNxU");
 			current_play_video="Vl75aVHhNxU";
+			enable_video = 0;
 			}
-		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>sunshine girl<br/>sunshine for you!";
-		top.leftFrame.play();
+		if(enable_video) 
+			{
+			top.leftFrame.document.getElementById("textbox").innerHTML = "</br>sunshine girl<br/>sunshine for you!";
+			top.leftFrame.play();
+			enable_video = 0;
+			}
 		}
 	//816 系圖 6.1, 44.7, 20.5, 34.85
 	else if (personX+moveX>6.1&&personX+moveX<20.5&&personY+moveY>35.85&&personY+moveY<44.7)
@@ -355,14 +371,20 @@ function newMapDraw()
 			{
 			top.leftFrame.player.loadVideoById("0fLUINWsoes","35");
 			current_play_video="0fLUINWsoes";
+			enable_video = 0;
 			}
-		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>南無痂藍喔~</br></br>痂藍</br></br>甘那赤藍</br></br>洽~壓~~壓~~";
-		top.leftFrame.play();
+		if(enable_video) 
+			{
+			top.leftFrame.document.getElementById("textbox").innerHTML = "</br>南無痂藍喔~</br></br>痂藍</br></br>甘那赤藍</br></br>洽~壓~~壓~~";
+			top.leftFrame.play();
+			enable_video = 0;
+			}
 		}
 	else
 		{
 		top.leftFrame.player.pauseVideo();
 		top.leftFrame.document.getElementById("textbox").innerHTML = "</br>歡迎光臨</br>四處走走吧";
+		enable_video = 1;
 		}
 	//
 	
