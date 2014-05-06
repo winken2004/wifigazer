@@ -1,0 +1,249 @@
+<!doctype html><!--html5的開頭宣告-->
+<html debug="true" lang="zh_tw" ><!--除錯與文本元素為繁體中文-->
+	<head><!--整個網站的開頭宣告-->
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"><!--宣告字集為utf-8code-->
+		<meta name="viewport" content="width=device-width" /><!--定義給手機看-->
+		<title>WiFigazer</title><!--網頁標題-->
+			<script type="text/javascript" src="js/jquery.js"></script>		  	
+			<script type="text/javascript" src="js/jQuerry/jquery.transit.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/JSTest.js"></script>
+			<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+			<link rel="stylesheet" type="text/css" href="css/button.css" />
+	<script>
+	var $j = jQuery.noConflict();
+		$j(document).ready(function(){
+			$j("#top").hide();
+			$j("#canvas").hide();
+			$j("#person").hide();
+			$j(".row").hide();
+			$j("#tt").hide();
+			$j("#circle").transition({x:210},1000,'ease');
+			$j("#tt").delay(1000);
+			$j("#tt").fadeIn(2000);
+			$j("#circle").delay(2000)
+			$j("#tt").delay(500);
+			$j("#box").delay(4500);
+			$j("#circle").delay(1500);
+			$j("#ghost").delay(4500);
+			$j("#tt").fadeOut(1000);
+			$j("#circle").fadeOut(1000);
+			$j("#box").fadeOut(1000);
+			$j("#ghost").fadeOut(1000);			
+			$j("#canvas").delay(5050);
+			$j("#top").delay(5050);
+			$j(".row").delay(5050);
+			$j("#person").delay(5050);
+			$j("#top").fadeIn(3000);
+			$j(".row").fadeIn(5000);
+			$j("#canvas").fadeIn(9000);
+			$j("#person").fadeIn(9000);
+		})
+	</script>			
+	<style type="text/css">
+	*{
+	margin:0;
+	padding:0;
+	}
+	</style>
+	</head><!--結束開頭宣告-->
+	<body onload="main()">
+	<h1 id="tt" style="z-index:2;position:absolute;top:50px;left:45%;"><font size='7' color='gold' face='Brush Script MT'>WiFigazer</font></h1>	
+	<div id="box" style="border-radius: 16px;
+	opacity: 0.8;background: #e5eeee;
+	position:absolute; 
+	box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+	width:185px;
+	z-index: 1;
+	height:53px;top:55px;left:44.5%"></div>
+	<div id="ghost" style="opacity: 0.8;background: #e5eeee;
+	  border-radius: 16px;
+	box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+	margin: -16px 0 0 -16px;
+	width: 242px;
+	height: 32px;
+	z-index: 1;position:absolute;top:20px;left:43.6%"></div>
+  <div id="circle" style=" z-index: 2;border-radius: 16px;position:absolute;background:grey; width:32px;height:32px;top:2.5px;left:42.75%"></div>
+	<div>
+	<div id="buttons" class = "container-fluid" >
+		<div class="row" style="background:#AAAA90;">
+		<div class="span2">   
+			<button class="btn btn-large btn-block " onclick="smaller()" id="small">--</button>
+			<button class="btn btn-large btn-block " onClick="bigger()">++</button>
+			<button class="btn btn-large btn-block btn-info" onclick="ShowCoord()">Show/Hidden </button>
+			<button class="btn btn-large btn-block btn-inverse" onclick="Clear()">ClearToDefault</button></br>			
+    <div class="dropdown all-camera-dropdown">
+           <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+            選擇目標
+               <b class="caret"></b>
+           </a>
+    <ul class="dropdown-menu">
+            <li ><a onclick="ED0(2);"data-toggle="tab" href="#">ED814</a></li>
+            <li ><a onclick="ED0(1);" data-toggle="tab" href="#">ED816</a></li>
+            <li ><a onclick="ED0(3);"data-toggle="tab" href="#">ED820</a></li>
+            <li ><a onclick="ED0(4);"data-toggle="tab" href="#">ED824</a></li>
+
+     </ul>
+	</div>
+		</div> 
+		<div id="canvas" class = "span10" >
+		<canvas id = "floor_8" style="background-image:url(img/floor.jpg); border:4px  solid #00F000;" width=1300 height=1200
+		onClick="DisplayData()" 
+		onmousemove=""
+        onmouseup="mouseupHandler(event)"
+		ondblclick="ViewSet()">Your Browser is not support html5 </canvas>
+	<div style="display:none; width:1000px" id="ED">
+		<a href="#" id="ED1" class="btn btn-success" data-delay=2000 style="display:none;" data-placement="top" rel="popover" data-content="Here is ED816 , use for ..." data-original-title="ED816">ED816</a>
+	</div><div style="display:none; width:1000px" id="ED5">		
+		<a href="#" id="ED2" class="btn btn-success" data-delay=2000 style="display:none;" data-placement="top" rel="popover" data-content="Here is ED814 , use for ..." data-original-title="ED814">ED814</a>
+	</div><div style="display:none; width:1000px" id="ED6">
+		<a href="#" id="ED3" class="btn btn-success" data-delay=2000 style="display:none;" data-placement="top" rel="popover" data-content="Here is ED820 , use for ..." data-original-title="ED820">ED820</a>
+	</div><div style="display:none; width:1000px" id="ED7">
+		<a href="#" id="ED4" class="btn btn-success" data-delay=2000 style="display:none;" data-placement="top" rel="popover" data-content="Here is ED824 , use for ..." data-original-title="ED824">ED824</a>
+	</div>		
+		</div>
+		</div>		
+	</div>
+	
+		<script>
+			$j(function ()
+			{ $j("#ED1").popover({trigger: 'hover'});
+			});
+			$j(function ()
+			{ $j("#ED2").popover({trigger: 'hover'});
+			});
+			$j(function ()
+			{ $j("#ED3").popover({trigger: 'hover'});
+			});
+			$j(function ()
+			{ $j("#ED4").popover({trigger: 'hover'});
+			});
+			function ED0(i)
+			{	
+				var t = document.getElementById("ED"+i);
+				t.style.display="inline";
+				$j("#ED"+i).popover("show");				
+				$j("#ED"+i).delay(2500);
+				$j("#ED"+i).fadeOut(2000);
+				setTimeout(function(){$j("#ED"+i).popover("hide");},2500);					
+			}
+		</script>	
+		<div class="bubbleInfo" id="AP1" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<div id="test"></div>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP14" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP14</p>
+				<p>X:1.3</p>
+				<p>Y:7.08</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP12" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP12</p>
+				<p>X:11.66</p>
+				<p>Y:26.73</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP19" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP19</p>
+				<p>X:11</p>
+				<p>Y:42.68</p>
+			</div>
+		</div>		
+		<div class="bubbleInfo" id="AP13" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP13</p>
+				<p>X:30.01</p>
+				<p>Y:33.88</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP17" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP17</p>
+				<p>X:38.06</p>
+				<p>Y:28.63</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP15" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP15</p>
+				<p>X:56.57</p>
+				<p>Y:38.76</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP16" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP16</p>
+				<p>X:52.32</p>
+				<p>Y:22.23</p>
+			</div>
+		</div>
+		<div class="bubbleInfo" id="AP11" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>AP11</p>
+				<p>X:57.75</p>
+				<p>Y:2.62</p>
+			</div>
+		</div>
+		
+		<div class="bubbleInfo" id="po2" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>定位點2</p>
+				<p>X:12.95</p>
+				<p>Y:30.33</p>
+			</div>
+		</div>		
+		
+		<div class="bubbleInfo" id="po3" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>定位點3</p>
+				<p>X:19.86</p>
+				<p>Y:35.61</p>
+			</div>
+		</div>			
+		
+		<div class="bubbleInfo" id="po" width="100px" height="100x">
+			<img class="trigger" id="APimg"  width="10px" height="10px"/>
+			<div class="popup">
+				<p>定位點1</p>
+				<p>X:0.42</p>
+				<p>Y:0.225</p>
+			</div>
+		</div>		
+
+		<div id="Imfo" style="display:none" width="10px" height="10px">
+			<p>test</p>
+		</div>
+		<div id="user" width="100px" height="100px" >
+			<img id="person" src="img/user.png" width="45px" height = "45px">
+		</div>
+		<div id="ED816" style="display:none" >
+			<img id="iED816" src="img/ED816.jpg" width="200px" height="200px"  /> 
+		</div>
+		<div id="ED814" style="display:none" >
+			<img id="iED814" src="img/ED814.jpg" width="200px" height="200px"  /> 
+		</div>
+		<div id="ED820" style="display:none" >
+			<img id="iED820" src="img/ED820.jpg" width="200px" height="200px"  /> 
+		</div>
+		<div id="ED824" style="display:none" >
+			<img id="iED824" src="img/ED824.jpg" width="200px" height="200px"  /> 
+		</div>		
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/button.css" />
+	<style type="text/css">
+	test_body{
+	background-image: url("../img/bg_flower3.jpg");
+	background-repeat:no-repeat;
+	background-size:253;
+	}
+	body{
+	background-image: url("img/bg10.png");
+	}
+	</style>
+</head>
+<body>
+<form>
+			<p>&nbsp;&nbsp;&nbsp;<a href="#" onclick="top.mainFrame.bigger()"  class="myButton">++</a>
+			<a href="#" onclick="top.mainFrame.smaller()" class="myButton">--</a></p>		
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onmousedown="top.mainFrame.upper()" class="myButton">^</a></p>
+			<p><a href="#" onmousedown="top.mainFrame.left()" onmouseup="top.mainFrame.left()" class="myButton"><</a>
+			<a href="#" onmousedown="top.mainFrame.down();" class="myButton">v</a>
+			<a href="#" onmousedown="top.mainFrame.right()" class="myButton">></a><p>
+			<p><a href="#" onclick="top.mainFrame.Clear()" class="myButton" >ClearToDefault</a></p>
+			<a href="#" onclick="top.mainFrame.ShowCoord()" class="myButton" >Show/Hidden Coord</a></p>			
+		</form></div>
+
+</body>

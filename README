@@ -1,2 +1,11 @@
-交大資工 專題課(一)
+NCTU
 WiFi gazer
+
+1.You can use keyboard(w/a/s/d)to control the icon. 
+
+2.If you enter a classroom, the left hand side will simply show some video and text guide to you.
+
+3.Position of user is fake.
+
+4.Index page using <iframe> rather than <frame> tag, because we want to allow youtube to full screen.
+
